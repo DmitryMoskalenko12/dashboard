@@ -1,0 +1,471 @@
+@use '../../../style/variables.scss';
+@use '../../../style/mixins.scss';
+
+.dashboard {
+    padding: 20px 0 20px 0;
+    &__wrapper {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__name-title {
+        color: variables.$evano-black;
+        font-size: variables.$font-size24;
+        font-weight: variables.$font-weight500;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &__header {
+       @include mixins.flex(flex, space-between, center);
+       padding: 0 15px 20px 15px;
+    }
+
+    &__name {
+        color: variables.$evano-black;
+        font-size: variables.$font-size15;
+        font-weight: variables.$font-weight600;
+        letter-spacing: -0.22px;
+    }
+    
+    &__active-members {
+        color: variables.$active-members;
+        font-size: variables.$font-size10;
+        font-weight: variables.$font-weight400;
+        letter-spacing: -0.14px;
+    }
+
+    &__col {
+       margin: 0 auto;
+    }
+
+    &__input-block {
+      position: relative;
+    }
+    
+    &__svg {
+      position: absolute;
+      left: 8px;
+      top: 7px;
+      bottom: 7px;
+    }
+
+    &__input {
+      width: 160px;
+      height: 38px;
+      border-radius: 10px;
+      padding-left: 40px;
+      background: variables.$input-bg;
+      border: none;
+      &::placeholder {
+        color: variables.$cust-name-color;
+        font-size: variables.$font-size12;
+        font-weight: variables.$font-weight400;
+        letter-spacing: -0.12px;
+      }
+    }
+
+    &__cust-name-block {
+        position: relative;
+        padding: 15px 0 15px 0;
+    }
+
+    &__cust-name {
+        color: variables.$cust-name-color;
+        font-size: variables.$font-size14;
+        font-weight: variables.$font-weight500;
+        letter-spacing: -0.14px;
+
+      &_left-phone {
+        margin-left: 15px;
+      }
+
+      &_left-country {
+        margin-left: 15px;
+      }
+
+      &_left-name {
+        margin-left: 15px;
+      }
+    }
+
+    $padding-sides: left right;
+    $padding-items: name company phone-number email country status;
+
+    @each $side in $padding-sides {
+    @each $item in $padding-items {
+        &__padding-#{$side}-#{$item} {
+        padding-#{$side}: 15px;
+        }
+    }
+    }
+
+    &__item-name {
+       position: relative;
+       padding: 24px 0 24px 0;
+       color: variables.$items-name-color;
+       font-size: variables.$font-size14;
+       font-weight: variables.$font-weight500;
+       letter-spacing: -0.14px;
+    }
+
+    &__item-status {
+        padding: 20.8px 0 20px 0;
+        font-size: 13px;
+    }
+
+    &__status-text {
+        width: 80px;
+        height: 28px;
+        border-radius: 4px;
+        @include mixins.flex(flex, center, center);
+        &_active {
+            font-size: variables.$font-size14;
+            font-weight: variables.$font-weight500;
+            letter-spacing: -0.14px;
+            background: variables.$background-active;
+            color: variables.$active-text;
+            border: 1px solid variables.$border-active;
+        }
+        &_no-active {
+            font-size: variables.$font-size14;
+            font-weight: variables.$font-weight500;
+            letter-spacing: -0.14px;
+            background: variables.$background-no-active;
+            color: variables.$text-no-active;
+            border: 1px solid variables.$border-no-active;
+        }
+    }
+}
+
+
+@media (min-width: 575px) {
+    .dashboard {
+        &__wrapper {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        &__col {
+            margin: initial;
+        }
+
+        &__padding-left-phone-number {
+            padding-left: 0;
+            padding-right: 15px;
+        }
+
+        &__padding-right-company {
+           padding-right: 0;
+        }
+
+        &__padding-right-email {
+            padding-left: 15px;
+            padding-right: 0;
+        }
+
+        &__padding-left-country {
+            padding-left: 0;
+        }
+
+        &__cust-name {
+          &_left-phone {
+            margin-left: 0;
+          }
+
+          &_left-email {
+            margin-left: 15px;
+          }
+
+          &_left-country {
+            margin-left: 0;
+          }
+        }
+
+        &__name {
+            font-size: variables.$font-size22;
+        }
+        
+        &__active-members {
+            font-size: variables.$font-size14;
+        }
+
+        &__input {
+            width: 216px;
+        }
+    }
+}
+
+@media (min-width: 767px) {
+    .dashboard {
+        padding: 37px 0 20px 0;
+
+        &__wrapper {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        &__padding-left-phone-number {
+            padding-right: 15px;
+        }
+
+        &__padding-right-company {
+           padding-right: 0;
+        }
+
+        &__padding-right-email {
+            padding-left: 15px;
+        }
+
+        &__padding-left-country {
+            padding-left: 15px;
+        }
+
+        &__cust-name {
+
+          &_left-country {
+            margin-left: 15px;
+          }
+
+        }
+
+    }
+}
+
+@media (min-width: 991px) {
+    .dashboard {
+        padding: 37px 0 0 0;
+
+        &__col {
+            margin: 0 auto;
+        }
+
+        &__wrapper-content {
+            padding: 0 0 40px 0;
+        }
+
+        &__wrapper {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        &__item-name {
+            position: relative;
+            &_after {
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 730%;
+                    top: 64px;
+                    left: 0px;
+                    height: 1px;
+                    background: variables.$color-border-bottom;
+                }
+            }
+        }
+
+        &__padding-left-phone-number {
+            padding-right: 0;
+        }
+
+        &__padding-right-company {
+           padding-right: 0;
+        }
+
+        &__padding-right-email {
+            padding-left: 0;
+        }
+
+        &__padding-left-country {
+            padding-left: 0;
+        }
+
+        &__status-text {
+            &_active {
+                font-size: variables.$font-size11;
+            }
+            &_no-active {
+                font-size: variables.$font-size11;
+            }
+        }
+
+        &__item-status {
+            padding: 16px 0 20px 0;
+        }
+
+        &__item-name {
+            font-size: variables.$font-size11;
+         }
+
+        &__cust-name {
+          font-size: variables.$font-size11;
+          &_after {
+            &:after {
+                content: '';
+                position: absolute;
+                width: 671%;
+                top: 54px;
+                left: -6px;
+                height: 1px;
+                background: variables.$color-border-bottom;
+            }
+        }
+
+          &_left-country {
+            margin-left: 0;
+          }
+
+          &_left-email {
+            margin-left: 0;
+          }
+        }
+
+    }
+}
+
+@media (min-width: 1024px) {
+ .dashboard {
+
+    &__item-name {
+        &_after {
+            &:after {
+                content: '';
+                width: 755%;
+            }
+        }
+    }
+
+    &__cust-name {
+        &_after {
+          &:after {
+              content: '';
+              width: 698%;
+          }
+      }
+    }
+ }
+}
+
+@media (min-width: 1199px) {
+    .dashboard {
+        &__header {
+           padding: 30px 38px 40px 38px;
+        }
+
+        &__name-title {
+           text-align: left;
+           margin-bottom: 51px;
+        }
+
+        &__wrapper-content {
+            border-radius: 20px;
+            background: variables.$aside-color;
+            filter: variables.$filter
+        }
+
+        &__padding-left-name {
+            padding-left: 38px;
+        }
+
+        &__padding-right-status {
+            padding-right: 38px;
+        }
+
+        &__wrapper {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+
+        &__status-text {
+            &_active {
+                font-size: variables.$font-size12;
+            }
+            &_no-active {
+                font-size: variables.$font-size12;
+            }
+        }
+
+        &__item-status {
+            padding: 16.4px 0 22px 0;
+         }
+
+        &__item-name {
+            font-size: variables.$font-size12;
+            &_after {
+                &:after {
+                    content: '';
+                    width: 771%;
+                    top: 64px;
+                }
+            }
+         }
+
+        &__cust-name {
+          font-size: variables.$font-size12;
+          &_after {
+            &:after {
+                content: '';
+                width: 624%;
+            }
+        }
+
+          &_left-name {
+            margin-left: 38px;
+          }
+
+        }
+
+    }
+}
+
+@media (min-width: 1440px) {
+    .dashboard {
+
+        &__header {
+            padding: 30px 53px 40px 38px;
+        }
+      
+        &__wrapper-content {
+            border-radius: 20px;
+            background: variables.$aside-color;
+            filter: variables.$filter
+        }
+
+        &__padding-right-status {
+            padding-right: 44px;
+        }
+
+        &__status-text {
+            &_active {
+                font-size: variables.$font-size14;
+            }
+            &_no-active {
+                font-size: variables.$font-size14;
+            }
+        }
+
+        &__item-status {
+            padding: 16.4px 0 16.4px 0;
+         }
+
+        &__item-name {
+            padding: 20px 0 20px 0;
+            font-size: variables.$font-size14;
+            &_after {
+                &:after {
+                    content: '';
+                    width: 762%;
+                    top: 60px;
+                }
+            }
+         }
+     
+        &__cust-name {
+          font-size: variables.$font-size14;
+          &_after {
+            &:after {
+                content: '';
+                width: 647%;
+            }
+        }
+        }
+
+    }
+}

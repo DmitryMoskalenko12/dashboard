@@ -1,0 +1,136 @@
+@use '../../../style/variables.scss';
+@use '../../../style/mixins.scss';
+
+.aside {
+    width: 306px;
+    min-height: 620px;
+    padding: 37px 28px 78px 28px;
+    box-shadow: variables.$box-shadow;
+    @include mixins.flex(flex, flex-start, flex-start);
+    flex-direction: column;
+    margin: 0 auto;
+
+    &__wrapper {
+        margin-bottom: 64px;
+    }
+
+    &__logo-block {
+       display: flex;
+       align-items: flex-end;
+       gap: 4px;
+       margin-bottom: 40px;
+    }
+
+    &__logo-version {
+        color: variables.$text-logo-version;
+        font-size: variables.$font-size10;
+        font-weight: variables.$font-weight500;
+        letter-spacing: -0.1px;
+    }
+
+    &__nav-list {
+        @include mixins.flex(flex, space-between, center);
+        flex-direction: column;
+        gap: 29px;
+
+    }
+
+    &__evano-img {
+       width: 42px;
+       height: 42px;
+       object-fit: cover;
+    }
+
+    &__evano-block {
+        @include mixins.flex(flex, flex-start, center);
+        gap: 12px;
+    }
+
+    &__evano {
+        color: variables.$evano-black;
+        font-size: variables.$font-size14;
+        font-weight: variables.$font-weight500;
+        letter-spacing: 0.14px;
+    }
+
+    &__job-title {
+        color: variables.$evano-text;
+        font-size: variables.$font-size12;
+        font-weight: variables.$font-weight400;
+        letter-spacing: 0.12px;
+    }
+
+    &__evano-text-block {
+        @include mixins.flex(flex, space-between, flex-start);
+        flex-direction: column;
+    }
+    
+}
+
+.aside-item {
+    width: 250px;
+    height: 46px;
+    padding: 11px 15px 11px 11px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    @include mixins.flex(flex, space-between, center);
+
+    &_active {
+        border-radius: 8px;
+        background: variables.$active;
+        path {
+            stroke: variables.$aside-color;
+        }
+    }
+
+    &__sub-block {
+        @include mixins.flex(flex, flex-start, center);
+        width: 116px;
+        height: 24px;
+        gap: 14px;
+    }
+
+    &__text {
+        color: variables.$text-color-aside;
+        font-size: variables.$font-size14;
+        font-weight: variables.$font-weight500;
+        letter-spacing: -0.14px;
+
+        &_active {
+            color: variables.$aside-color;
+        }
+    }
+}
+
+@media (min-width: 767px) {
+ .aside {
+    margin: initial;
+ }
+}
+
+@media (min-width: 991px) {
+    .aside {
+        width: 264px;
+        padding: 37px 20px 78px 20px;
+        justify-content: space-between;
+        margin: initial;
+    }
+
+    .aside-item {
+        width: 215px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .aside {
+        min-height: 1198px;
+        width: 306px;
+        padding: 37px 36px 78px 39px;
+        @include mixins.flex(flex, space-between, flex-start);
+    }
+
+    .aside-item {
+        width: 250px;
+    }
+}

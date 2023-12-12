@@ -1,0 +1,19 @@
+@media (min-width: 767px) {
+    .main-wrapper {
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+
+@media (min-width: 1199px) {
+    .main-wrapper {
+        gap: 40px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .main-wrapper {
+        gap: 71px;
+    }
+}
